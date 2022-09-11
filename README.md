@@ -17,51 +17,44 @@ Trabalho apresentado ao curso [BI MASTER](https://ica.puc-rio.ai/bi-master) como
 
 ### Resumo
 
-<!-- trocar o texto abaixo pelo resumo do trabalho, em português -->
+Este trabalho tem como idéia unir um dos hobbys preferidos do aluno, que é viajar, com as disciplinas que o mesmo melhor se identificou: Web Scrapping e Machine Learning. O intuito é criar um protótipo de ferramenta que coletará dados de passagens e retornará uma previsão de preço dos próximos meses.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pulvinar nisl vestibulum tortor fringilla, eget imperdiet neque condimentum. Proin vitae augue in nulla vehicula porttitor sit amet quis sapien. Nam rutrum mollis ligula, et semper justo maximus accumsan. Integer scelerisque egestas arcu, ac laoreet odio aliquet at. Sed sed bibendum dolor. Vestibulum commodo sodales erat, ut placerat nulla vulputate eu. In hac habitasse platea dictumst. Cras interdum bibendum sapien a vehicula.
-
-Proin feugiat nulla sem. Phasellus consequat tellus a ex aliquet, quis convallis turpis blandit. Quisque auctor condimentum justo vitae pulvinar. Donec in dictum purus. Vivamus vitae aliquam ligula, at suscipit ipsum. Quisque in dolor auctor tortor facilisis maximus. Donec dapibus leo sed tincidunt aliquam.
-
-Donec molestie, ante quis tempus consequat, mauris ante fringilla elit, euismod hendrerit leo erat et felis. Mauris faucibus odio est, non sagittis urna maximus ut. Suspendisse blandit ligula pellentesque tincidunt malesuada. Sed at ornare ligula, et aliquam dui. Cras a lectus id turpis accumsan pellentesque ut eget metus. Pellentesque rhoncus pellentesque est et viverra. Pellentesque non risus velit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-
-### Abstract <!-- Opcional! Caso não aplicável, remover esta seção -->
-
-<!-- trocar o texto abaixo pelo resumo do trabalho, em inglês -->
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pulvinar nisl vestibulum tortor fringilla, eget imperdiet neque condimentum. Proin vitae augue in nulla vehicula porttitor sit amet quis sapien. Nam rutrum mollis ligula, et semper justo maximus accumsan. Integer scelerisque egestas arcu, ac laoreet odio aliquet at. Sed sed bibendum dolor. Vestibulum commodo sodales erat, ut placerat nulla vulputate eu. In hac habitasse platea dictumst. Cras interdum bibendum sapien a vehicula.
-
-Proin feugiat nulla sem. Phasellus consequat tellus a ex aliquet, quis convallis turpis blandit. Quisque auctor condimentum justo vitae pulvinar. Donec in dictum purus. Vivamus vitae aliquam ligula, at suscipit ipsum. Quisque in dolor auctor tortor facilisis maximus. Donec dapibus leo sed tincidunt aliquam.
-
-Donec molestie, ante quis tempus consequat, mauris ante fringilla elit, euismod hendrerit leo erat et felis. Mauris faucibus odio est, non sagittis urna maximus ut. Suspendisse blandit ligula pellentesque tincidunt malesuada. Sed at ornare ligula, et aliquam dui. Cras a lectus id turpis accumsan pellentesque ut eget metus. Pellentesque rhoncus pellentesque est et viverra. Pellentesque non risus velit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+Como as bases de dados de preços de passagens encontradas da internet são particulares/pagas, foi desenvolvido um código que faz a leitura e armazenamento dos preços encontrados no site Skyscanner. Com esses dados em mãos (cerca de um ano de preços de passagens, coletados de 3 em 3 dias com duração de 7 dias de viagem), faz-se um estudo dos principais modelos de Machine Learning e uma rede neural Long Short-Term Memory (LSTM) para previsão de preços para o futuro. 
 
 ### 1. Introdução
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pulvinar nisl vestibulum tortor fringilla, eget imperdiet neque condimentum. Proin vitae augue in nulla vehicula porttitor sit amet quis sapien. Nam rutrum mollis ligula, et semper justo maximus accumsan. Integer scelerisque egestas arcu, ac laoreet odio aliquet at. Sed sed bibendum dolor. Vestibulum commodo sodales erat, ut placerat nulla vulputate eu. In hac habitasse platea dictumst. Cras interdum bibendum sapien a vehicula.
+Todo turista ou viajante que começa a preparar alguma viagem se depara com o mesmo problema: quando comprar sua passagem para ter o preço mais barato. Através da raspagem de dados e com algumas análises de regressão em Machine Learning, tentaremos prever o comportamento dos preços ao longo de um período e descobrir qual o melhor período para fazer a compra de passagem ida e volta. 
 
-Proin feugiat nulla sem. Phasellus consequat tellus a ex aliquet, quis convallis turpis blandit. Quisque auctor condimentum justo vitae pulvinar. Donec in dictum purus. Vivamus vitae aliquam ligula, at suscipit ipsum. Quisque in dolor auctor tortor facilisis maximus. Donec dapibus leo sed tincidunt aliquam.
+Para simplificar, utilizaremos a cidade do Rio de Janeiro como origem, Berlim como destino, e um período de viagem de 7 dias. É possível alterar esses valores no código, se assim desejar. 
 
 ### 2. Modelagem
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pulvinar nisl vestibulum tortor fringilla, eget imperdiet neque condimentum. Proin vitae augue in nulla vehicula porttitor sit amet quis sapien. Nam rutrum mollis ligula, et semper justo maximus accumsan. Integer scelerisque egestas arcu, ac laoreet odio aliquet at. Sed sed bibendum dolor. Vestibulum commodo sodales erat, ut placerat nulla vulputate eu. In hac habitasse platea dictumst. Cras interdum bibendum sapien a vehicula.
+De início, viu-se que era necessário a criação de um dataset próprio para treino dos modelos, pois os datasets presentes na internet são escassos e quando existem, são particulares e/ou pagos. 
 
-Proin feugiat nulla sem. Phasellus consequat tellus a ex aliquet, quis convallis turpis blandit. Quisque auctor condimentum justo vitae pulvinar. Donec in dictum purus. Vivamus vitae aliquam ligula, at suscipit ipsum. Quisque in dolor auctor tortor facilisis maximus. Donec dapibus leo sed tincidunt aliquam.
+Portanto, decidiu-se pela raspagem de dados do site Skyscanner, por já ser conhecido e considerado confiável pelo aluno. A ferramenta utilizada foi a biblioteca Selenium - ferramenta já amplamenta conhecida utilizada para automatizar operações de browsers - na linguagem Python. 
+
+Alguns parâmetros e técnicas utilizadas para este processo foram: 
+- Criação de um profile próprio para o Chrome utilizado pelo Selenium (arquivos estão dentro da pasta selenium).
+- Definição de parâmetros do webdriver do Chrome, como versão do navegador, flag de automação desativada, tamanho da janela e o acréscimo de tempos de espera ao longo do código, para deixar o processo mais "humano", e menos "robótico". 
+- A url utilizada pelo Chromedriver já foi com as querys da busca pré-definidas, pois na página inicial do Skyscanner existem ferramentas de calendário para definir data de ida e chegada que utilizam Javascript e outras ferramentas, dificultando o processo de automatização. 
+
+A raspagem é feita em cima do código HTML aberto da própria página do Skyscanner e busca unicamente o preço "mais barato", definido na parte de cima da página. Para armazenar o valor do preço, é guardada a data de ida, de volta, a cidade e o valor do preço em si, já inclusio a ida e a volta definidas pelo Skyscanner. Para isso, é utilizada a biblioteca Beautiful Soup, para Python. 
+
+Com os valores dos preços em mãos, foram feitos estudos de diversos tipos de modelos de regressão de Machine Learning, como Random Forest Regressor, Decision Tree Regressor, KNN Regressor (biblioteca sklearn) e XGBoost (biblioteca xgboost), todos com suas respectivas funções de hypertuning para encontro do melhor resultado. Também foi utilizada uma rede LSTM, da biblioteca Keras.  
+
+A métrica utilizada para comparação foi o MAE (Mean Absolute Error). 
 
 ### 3. Resultados
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pulvinar nisl vestibulum tortor fringilla, eget imperdiet neque condimentum. Proin vitae augue in nulla vehicula porttitor sit amet quis sapien. Nam rutrum mollis ligula, et semper justo maximus accumsan. Integer scelerisque egestas arcu, ac laoreet odio aliquet at. Sed sed bibendum dolor. Vestibulum commodo sodales erat, ut placerat nulla vulputate eu. In hac habitasse platea dictumst. Cras interdum bibendum sapien a vehicula.
-
-Proin feugiat nulla sem. Phasellus consequat tellus a ex aliquet, quis convallis turpis blandit. Quisque auctor condimentum justo vitae pulvinar. Donec in dictum purus. Vivamus vitae aliquam ligula, at suscipit ipsum. Quisque in dolor auctor tortor facilisis maximus. Donec dapibus leo sed tincidunt aliquam.
+Os melhores resultados ficaram igualmente com a rede LSTM e com o modelo Random Forest Regressor, ambos com MAE em torno de 410 reais. 
 
 ### 4. Conclusões
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pulvinar nisl vestibulum tortor fringilla, eget imperdiet neque condimentum. Proin vitae augue in nulla vehicula porttitor sit amet quis sapien. Nam rutrum mollis ligula, et semper justo maximus accumsan. Integer scelerisque egestas arcu, ac laoreet odio aliquet at. Sed sed bibendum dolor. Vestibulum commodo sodales erat, ut placerat nulla vulputate eu. In hac habitasse platea dictumst. Cras interdum bibendum sapien a vehicula.
-
-Proin feugiat nulla sem. Phasellus consequat tellus a ex aliquet, quis convallis turpis blandit. Quisque auctor condimentum justo vitae pulvinar. Donec in dictum purus. Vivamus vitae aliquam ligula, at suscipit ipsum. Quisque in dolor auctor tortor facilisis maximus. Donec dapibus leo sed tincidunt aliquam.
+Conseguimos um modelo de predição com erro de cerca de 410 reais, para trechos de passagem que variam facilmente em torno de R$10.000,00 e R$3.000,00. Em termos de custo, a variação do erro é aceitável. Há algum espaço para melhora que inclui acrescentar mais variáveis aos modelos, como escalas, tempo de viagem, etc. 
 
 ---
 
-Matrícula: 123.456.789
+Matrícula: 202190324
 
 Pontifícia Universidade Católica do Rio de Janeiro
 
