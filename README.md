@@ -8,10 +8,10 @@
 Trabalho apresentado ao curso [BI MASTER](https://ica.puc-rio.ai/bi-master) como pré-requisito para conclusão de curso e obtenção de crédito na disciplina "Projetos de Sistemas Inteligentes de Apoio à Decisão".
 
 - [Scrap_Precos_2022.ipynb](Scrap_Precos_2022.ipynb)
-- [Scrap_Precos_2023.ipynb]
-- [Modelos.ipynb]
-- [Modelos_Normalizado.ipynb]
-- [LSTM.ipynb]
+- [Scrap_Precos_2023.ipynb](Scrap_Precos_2023.ipynb)
+- [Modelos.ipynb](Modelos.ipynb)
+- [Modelos_Normalizado.ipynb](Modelos_Normalizado.ipynb)
+- [LSTM.ipynb](LSTM.ipynb)
 
 ---
 
