@@ -1,0 +1,1 @@
+Dezipar o Default.zip como folder chamada Default, dentro da pasta selenium. 
