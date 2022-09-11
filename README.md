@@ -17,13 +17,13 @@ Trabalho apresentado ao curso [BI MASTER](https://ica.puc-rio.ai/bi-master) como
 
 ### Resumo
 
-Este trabalho tem como idéia unir um dos hobbys preferidos do aluno, que é viajar, com as disciplinas que o mesmo melhor se identificou: Web Scrapping e Machine Learning. O intuito é criar um protótipo de ferramenta que coletará dados de passagens e retornará uma previsão de preço dos próximos meses.
+Este trabalho tem como ideia unir um dos hobbys preferidos do aluno, que é viajar, com as disciplinas que o mesmo melhor se identificou: Web Scrapping e Machine Learning. O intuito é criar um protótipo de ferramenta que coletará dados de passagens e estabelecerá uma previsão de preço dos próximos meses.
 
 Como as bases de dados de preços de passagens encontradas da internet são particulares/pagas, foi desenvolvido um código que faz a leitura e armazenamento dos preços encontrados no site Skyscanner. Com esses dados em mãos (cerca de um ano de preços de passagens, coletados de 3 em 3 dias com duração de 7 dias de viagem), faz-se um estudo dos principais modelos de Machine Learning e uma rede neural Long Short-Term Memory (LSTM) para previsão de preços para o futuro. 
 
 ### 1. Introdução
 
-Todo turista ou viajante que começa a preparar alguma viagem se depara com o mesmo problema: quando comprar sua passagem para ter o preço mais barato. Através da raspagem de dados e com algumas análises de regressão em Machine Learning, tentaremos prever o comportamento dos preços ao longo de um período e descobrir qual o melhor período para fazer a compra de passagem ida e volta. 
+Todo turista ou viajante que começa a preparar alguma viagem se depara com o mesmo problema: quando comprar sua passagem para obter o preço mais barato. Através da raspagem de dados e com algumas análises de regressão em Machine Learning, tentaremos prever o comportamento dos preços ao longo de um período e descobrir qual o melhor período para fazer a compra de passagem de ida e volta. 
 
 Para simplificar, utilizaremos a cidade do Rio de Janeiro como origem, Berlim como destino, e um período de viagem de 7 dias. É possível alterar esses valores no código, se assim desejar. 
 
@@ -31,14 +31,14 @@ Para simplificar, utilizaremos a cidade do Rio de Janeiro como origem, Berlim co
 
 De início, viu-se que era necessário a criação de um dataset próprio para treino dos modelos, pois os datasets presentes na internet são escassos e quando existem, são particulares e/ou pagos. 
 
-Portanto, decidiu-se pela raspagem de dados do site Skyscanner, por já ser conhecido e considerado confiável pelo aluno. A ferramenta utilizada foi a biblioteca Selenium - ferramenta já amplamenta conhecida utilizada para automatizar operações de browsers - na linguagem Python. 
+Portanto, decidiu-se pela raspagem de dados do site Skyscanner, por já ser conhecido e considerado confiável. A ferramenta utilizada foi a biblioteca Selenium - ferramenta já amplamente conhecida e utilizada para automatizar operações de browsers - na linguagem Python. 
 
 Alguns parâmetros e técnicas utilizadas para este processo foram: 
 - Criação de um profile próprio para o Chrome utilizado pelo Selenium (arquivos estão dentro da pasta selenium).
 - Definição de parâmetros do webdriver do Chrome, como versão do navegador, flag de automação desativada, tamanho da janela e o acréscimo de tempos de espera ao longo do código, para deixar o processo mais "humano", e menos "robótico". 
 - A url utilizada pelo Chromedriver já foi com as querys da busca pré-definidas, pois na página inicial do Skyscanner existem ferramentas de calendário para definir data de ida e chegada que utilizam Javascript e outras ferramentas, dificultando o processo de automatização. 
 
-A raspagem é feita em cima do código HTML aberto da própria página do Skyscanner e busca unicamente o preço "mais barato", definido na parte de cima da página. Para armazenar o valor do preço, é guardada a data de ida, de volta, a cidade e o valor do preço em si, já inclusio a ida e a volta definidas pelo Skyscanner. Para isso, é utilizada a biblioteca Beautiful Soup, para Python. 
+A raspagem é feita em cima do código HTML aberto da própria página do Skyscanner e busca unicamente o preço "mais barato", definido na parte de cima da página. Para armazenar o valor do preço, é guardada a data de ida, de volta, a cidade e o valor do preço em si, já incluso a ida e a volta definidas pelo Skyscanner. Para isso, é utilizada a biblioteca Beautiful Soup, para Python. 
 
 Com os valores dos preços em mãos, foram feitos estudos de diversos tipos de modelos de regressão de Machine Learning, como Random Forest Regressor, Decision Tree Regressor, KNN Regressor (biblioteca sklearn) e XGBoost (biblioteca xgboost), todos com suas respectivas funções de hypertuning para encontro do melhor resultado. Também foi utilizada uma rede LSTM, da biblioteca Keras.  
 
