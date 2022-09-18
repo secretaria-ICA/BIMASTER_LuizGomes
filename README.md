@@ -40,6 +40,10 @@ Alguns parâmetros e técnicas utilizadas para este processo foram:
 
 A raspagem é feita em cima do código HTML aberto da própria página do Skyscanner e busca unicamente o preço "mais barato", definido na parte de cima da página. Para armazenar o valor do preço, é guardada a data de ida, de volta, a cidade e o valor do preço em si, já incluso a ida e a volta definidas pelo Skyscanner. Para isso, é utilizada a biblioteca Beautiful Soup, para Python. 
 
+O dataset final ficou da seguinte forma: 
+
+![Dataset Completo](dataset_completo.png)
+
 Com os valores dos preços em mãos, foram feitos estudos de diversos tipos de modelos de regressão de Machine Learning, como Random Forest Regressor, Decision Tree Regressor, KNN Regressor (biblioteca sklearn) e XGBoost (biblioteca xgboost), todos com suas respectivas funções de hypertuning para encontro do melhor resultado. Também foi utilizada uma rede LSTM, da biblioteca Keras.  
 
 A métrica utilizada para comparação foi o MAE (Mean Absolute Error). 
