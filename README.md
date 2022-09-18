@@ -42,7 +42,7 @@ A raspagem é feita em cima do código HTML aberto da própria página do Skysca
 
 O dataset final ficou da seguinte forma: 
 
-![Dataset Completo](dataset_completo.png)
+![Dataset Completo](https://github.com/luizgrneto/BIMASTER_LuizGomes/blob/main/Imagens/dataset_completo.PNG)
 
 Com os valores dos preços em mãos, foram feitos estudos de diversos tipos de modelos de regressão de Machine Learning, como Random Forest Regressor, Decision Tree Regressor, KNN Regressor (biblioteca sklearn) e XGBoost (biblioteca xgboost), todos com suas respectivas funções de hypertuning para encontro do melhor resultado. Também foi utilizada uma rede LSTM, da biblioteca Keras.  
 
@@ -50,7 +50,9 @@ A métrica utilizada para comparação foi o MAE (Mean Absolute Error).
 
 ### 3. Resultados
 
-Os melhores resultados ficaram igualmente com a rede LSTM e com o modelo Random Forest Regressor, ambos com MAE em torno de 410 reais. 
+Os melhores resultados ficaram igualmente com a rede LSTM e com o modelo Random Forest Regressor, ambos com MAE em torno de 410 reais:
+
+![Predição em cima do teste](https://github.com/luizgrneto/BIMASTER_LuizGomes/blob/main/Imagens/trecho_predicao.PNG)
 
 ### 4. Conclusões
 
