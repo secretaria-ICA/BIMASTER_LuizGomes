@@ -56,7 +56,9 @@ Os melhores resultados ficaram igualmente com a rede LSTM e com o modelo Random 
 
 ### 4. Conclusões
 
-Conseguimos um modelo de predição com erro de cerca de 410 reais, para trechos de passagem que variam facilmente em torno de R$10.000,00 e R$3.000,00. Em termos de custo, a variação do erro é aceitável. Há algum espaço para melhora que inclui acrescentar mais variáveis aos modelos, como escalas, tempo de viagem, etc. 
+Conseguimos um modelo de predição com erro de cerca de 410 reais, para trechos de passagem que variam facilmente em torno de R$10.000,00 e R$3.000,00. Em termos de custo, a variação do erro é aceitável. Além disso, pela previsão do modelo acima, o período ideal de compra de passagem nesse período seria entre o sexto e o vigésimo quarto dia a partir da consulta.
+
+Há algum espaço para melhora que inclui acrescentar mais variáveis aos modelos, como escalas, tempo de viagem, e mais pontos de predição. 
 
 ---
 
