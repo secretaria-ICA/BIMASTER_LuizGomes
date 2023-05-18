@@ -1,4 +1,4 @@
-# Scraping e previsão de preços de passagem Rio - Berlim
+# Scraping_e_Previsao_de_Precos_de_Passagens_Rio_Berlim
 
 #### Aluno: [Luiz Gomes Ribeiro Neto](https://github.com/luizgrneto)
 #### Orientador: [Felipe Borges](https://github.com/FelipeBorgesC)
